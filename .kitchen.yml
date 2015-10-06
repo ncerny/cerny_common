@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: bento/centos-7.1
+
+suites:
+  - name: ntp
+    run_list:
+      - recipe[cerny_common::ntp]
+    attributes:
+  - name: chef-client
+    run_list:
+      - recipe[cerny_common::chef-client]
+    attributes:
+  - name: firewall
+    run_list:
+      - recipe[cerny_common::firewall]
+    attributes:
