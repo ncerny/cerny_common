@@ -1,0 +1,4 @@
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="igb", ATTR{type}=="1", ATTR{address}=="00:a0:d1:ec:8e:94", PROGRAM="/lib/udev/rename_device", NAME="enp1s0f0"
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="igb", ATTR{type}=="1", ATTR{address}=="00:a0:d1:ec:8e:95", PROGRAM="/lib/udev/rename_device", NAME="enp1s0f1"
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="ixgbe", ATTR{type}=="1", ATTR{address}=="00:8c:fa:1c:03:fa", PROGRAM="/lib/udev/rename_device", NAME="enp2s0f0"
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="ixgbe", ATTR{type}=="1", ATTR{address}=="00:8c:fa:1c:03:fb", PROGRAM="/lib/udev/rename_device", NAME="enp2s0f1"

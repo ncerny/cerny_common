@@ -1,0 +1,7 @@
+TYPE=Ethernet
+NAME=bridge-slave-enp2s0f0
+UUID=fda6a6c1-1e78-4eda-b5bb-521fb790d2e8
+DEVICE=enp2s0f0
+ONBOOT=yes
+BRIDGE=clbr0
+MTU=9000

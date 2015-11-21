@@ -1,0 +1,4 @@
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="e1000e", ATTR{type}=="1", ATTR{address}=="00:30:48:c2:20:68", PROGRAM="/lib/udev/rename_device", NAME="enp1s0f0"
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="e1000e", ATTR{type}=="1", ATTR{address}=="00:30:48:c2:20:69", PROGRAM="/lib/udev/rename_device", NAME="enp1s0f1"
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="cxgb3", ATTR{type}=="1", ATTR{address}=="00:07:43:06:e8:2d", PROGRAM="/lib/udev/rename_device", NAME="enp2s0f0"
+ACTION=="add", SUBSYSTEM=="net", DRIVERS=="cxgb3", ATTR{type}=="1", ATTR{address}=="00:07:43:06:e8:2e", PROGRAM="/lib/udev/rename_device", NAME="enp2s0f1"
