@@ -20,6 +20,10 @@
 
 return unless %w(ceph01.cerny.cc ceph02.cerny.cc ceph03.cerny.cc).include?(node['fqdn'])
 
+file '/tmp/reboot' do
+  action :delete
+end
+
 %w(ifcfg-enp1s0f0 ifcfg-enp1s0f1 ifcfg-bridge-slave-enp2s0f0 ifcfg-bridge-slave-enp2s0f1 ifcfg-bridge-clbr0).each do |dev|
   cookbook_file "/etc/sysconfig/network-scripts/#{dev}" do
     action :create
@@ -38,10 +42,6 @@ cookbook_file '/etc/udev/rules.d/60-persistent-net.rules' do
   group 'root'
   mode '0640'
   notifies :touch, 'file[/tmp/reboot]', :immediately
-end
-
-file '/tmp/reboot' do
-  action :nothing
 end
 
 reboot 'network-configuration' do
