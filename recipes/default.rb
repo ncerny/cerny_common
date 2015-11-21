@@ -16,6 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# include_recipe 'cerny_common::network'
+include_recipe 'cerny_common::network'
 include_recipe 'cerny_common::ntp'
 include_recipe 'cerny_common::chef-client'
+include_recipe 'firewalld'
