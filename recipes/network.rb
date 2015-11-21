@@ -41,6 +41,7 @@ cookbook_file '/etc/NetworkManager/dispatcher.d/99-mtu' do
   owner 'root'
   group 'root'
   mode '0750'
+  notifies :restart, 'service[network]', :delayed
 end
 
 cookbook_file '/etc/udev/rules.d/60-persistent-net.rules' do
@@ -57,6 +58,11 @@ reboot 'network-configuration' do
   reason 'Reboot to pick up network changes'
   delay_mins 0
   only_if { File.exist?('/tmp/reboot') }
+end
+
+service 'network' do
+  action :nothing
+  supports [:start, :stop, :status, :restart]
 end
 
 # rubocop:enable LineLength
