@@ -27,7 +27,7 @@ return unless %w(ceph01.cerny.cc ceph02.cerny.cc ceph03.cerny.cc).include?(node[
     owner 'root'
     group 'root'
     mode '0640'
-    notifies :run, 'ruby[reboot-necessary]', :immediately
+    notifies :touch, 'file[/tmp/reboot]', :immediately
   end
 end
 
@@ -37,19 +37,18 @@ cookbook_file '/etc/udev/rules.d/60-persistent-net.rules' do
   owner 'root'
   group 'root'
   mode '0640'
-  notifies :run, 'ruby[reboot-necessary]', :immediately
+  notifies :touch, 'file[/tmp/reboot]', :immediately
 end
 
-ruby 'reboot-necessary' do
+file '/tmp/reboot' do
   action :nothing
-  code "node.run_state['reboot'] = true"
 end
 
 reboot 'network-configuration' do
   action :reboot_now
   reason 'Reboot to pick up network changes'
   delay_mins 0
-  only_if { node.run_state['reboot'] }
+  only_if { File.exist?('/tmp/reboot') }
 end
 
 # rubocop:enable LineLength
