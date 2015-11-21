@@ -35,6 +35,14 @@ end
   end
 end
 
+cookbook_file '/etc/NetworkManager/dispatcher.d/99-mtu' do
+  action :create
+  source 'mtu-dispatcher'
+  owner 'root'
+  group 'root'
+  mode '0750'
+end
+
 cookbook_file '/etc/udev/rules.d/60-persistent-net.rules' do
   action :create
   source 'persistent-net.rules'
