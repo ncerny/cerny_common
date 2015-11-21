@@ -26,7 +26,7 @@ return unless %w(ceph01.cerny.cc ceph02.cerny.cc ceph03.cerny.cc).include?(node[
     source dev
     owner 'root'
     group 'root'
-    node '0640'
+    mode '0640'
     notifies :run, 'ruby[reboot-necessary]', :immediately
   end
 end
