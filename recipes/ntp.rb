@@ -17,6 +17,8 @@
 # limitations under the License.
 # rubocop:disable LineLength
 
+return if node['virtualization']['system'] == 'lxc'
+
 # From old base recipe.
 # ntpservers = []
 # ntp_servers = search(:node, 'tags:ntp_server')
