@@ -4,9 +4,9 @@ maintainer_email 'ncerny@gmail.com'
 license 'apache2'
 description 'cerny environment common cookbook'
 long_description 'The base/common cookbook for my personal environment.'
-version '0.3.4'
+version '0.3.5'
 
-supports 'redhat', '>= 7.0.0'
+supports 'redhat'
 
 depends 'ntp'
 depends 'chef-client'
