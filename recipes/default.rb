@@ -19,4 +19,4 @@
 include_recipe 'cerny_common::network'
 include_recipe 'cerny_common::ntp'
 include_recipe 'cerny_common::chef-client'
-include_recipe 'firewalld' if platform_family?('rhel') && node[:platform_version] > 7 # rubocop:disable LineLength
+include_recipe 'firewalld' if platform_family?('rhel') && Gem::Version.new(node['platform_version']) > Gem::Version.new('7') # rubocop:disable LineLength
