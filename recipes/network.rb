@@ -20,11 +20,13 @@
 
 return unless %w(ceph01.cerny.cc ceph02.cerny.cc ceph03.cerny.cc).include?(node['fqdn'])
 
+package 'net-tools'
+
 file '/tmp/reboot' do
   action :delete
 end
 
-%w(ifcfg-enp1s0f0 ifcfg-enp1s0f1 ifcfg-bridge-slave-enp2s0f0 ifcfg-bridge-slave-enp2s0f1 ifcfg-bridge-clbr0).each do |dev|
+%w(ifcfg-enp1s0f0 ifcfg-enp1s0f1 ifcfg-bridge-slave-enp2s0f0 ifcfg-bridge-slave-enp2s0f1 ifcfg-bridge-clbr0 ifcfg-vlan17).each do |dev|
   cookbook_file "/etc/sysconfig/network-scripts/#{dev}" do
     action :create
     source dev
