@@ -1,2 +1,3 @@
 ifconfig enp2s0f0 mtu 9000
 ifconfig enp2s0f1 mtu 9000
+ifconfig clbr0.17 mtu 9000
